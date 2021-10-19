@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Run</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <style>
+        form :focus:required:invalid {
+          border-color: #bf3f3d;
+        }
+  </style>
+</head>
+<body class="container">
+    <header>
+        <h1>Coffee Run</h1>
+    </header>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <form data-coffee-order="form">
+                    <p>
+                        <div class="form-group">
+                            <label for="coffeeOrder">Coffee Order</label>
+                            <input class="form-control" name="coffee" id="coffeeOrder" autofocus pattern="[a-zA-Z\s]+"
+                                required>
+                        </div>
+                    </p>
+
+                    <p>
+                        <div class="form-group">
+                            <label for="emailInput">Email</label>
+                            <input class="form-control" type="email" name="emailAddress" id="emailInput" value=""
+                                placeholder="picard@starfleet.com" required>
+                        </div>
+                    </p>
+
+                    <p>
+                        <div class="radio"><label><input type="radio" name="size" value="short"> Short</label></div>
+                        <div class="radio"><label><input type="radio" name="size" value="tall" checked> Tall</label></div>
+                        <div class="radio"><label><input type="radio" name="size" value="grande"> Grande</label></div>
+                        <div class="radio"><label><input type="radio" name="size" value="venti"> Venti</label></div>
+                    </p>
+
+                    <p>
+                        <div class="form-group">
+                            <label for="flavorShot">Flavor Shot</label>
+                            <select id="flavorShot" class="form-control" name="flavor">
+                                <option value="" selected>None</option>
+                                <option value="almond">Almond</option>
+                                <option value="caramel">Caramel</option>
+                                <option value="mocha">Mocha</option>
+                                <option value="pumpkin">Pumpkin</option>
+                                <option value="vanilla">Vanilla</option>
+                            </select>
+                        </div>
+                    </p>
+
+                    <p>
+                        <div class="form-group">
+                            <label for="strengthLevel">Caffeine Rating</label>
+                            <input name="strength" id="strengthLevel" type="range" min="1" max="100" value="70">
+                        </div>
+                    </p>
+
+                    <!-- A successful order submission will redirect the user to the payment form -->
+                    <p>
+                        <!-- <button type="submit" class="btn btn-primary" onclick="toPaymentForm()">Submit</button> -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-primary-default">Reset</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <h4>Pending Orders:</h4>
+                <p>
+                    <div data-coffee-order="checklist"></div>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redirects the user to the payment form after clicking Submit -->
+    <!-- <script>
+        function toPaymentForm() {
+            location.replace("paymentForm.html");
+        }
+    </script> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/checklist.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/remotedatastore.js" charset="utf-8"></script>
+    <!-- <script src="scripts/firebaseconfig.js" charset="utf-8"></script> -->
+    <script src="scripts/firebasedatastore.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/truck.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+</body>
+</html>
